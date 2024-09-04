@@ -56,8 +56,8 @@ def chat_with_character_chatbot(message, history):
                                          huggingface_token=os.getenv('huggingface_token')
                                         )
     output = character_chatbot.chat(message, history)
-    output = output['content'].strip()
-    return output
+    output_content = output.strip()
+    return output_content
     
 
 

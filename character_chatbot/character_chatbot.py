@@ -55,15 +55,13 @@ class CharacterChatBot():
             
         messages.append({'role':'user', 'content':message})
         
-        prompt = "\n".join([f"{msg['role']}: {msg['content']}" for msg in messages])
-        
         terminator =[
             self.model.tokenizer.eos_token_id,
             self.model.tokenizer.convert_tokens_to_ids('<|eot_id|>')
         ]
         
         output = self.model(
-            prompt,
+            messages,
             max_length=256,
             eos_token_id=terminator,
             do_sample=True,
@@ -71,11 +69,9 @@ class CharacterChatBot():
             top_p=0.9
         )
         
-        output_message = output[0]['generated_text']
+        output_message = output[0]['generated_text'][-1]
     
-        # Extract only the assistant's response
-        assistant_response = output_message.split('assistant:')[-1].strip()
-        return assistant_response
+        return output_message
     
     
     def load_model(self, model_path):

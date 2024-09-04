@@ -68,10 +68,23 @@ class CharacterChatBot():
             temperature=0.6,
             top_p=0.9
         )
-        
-        output_message = output[0]['generated_text'][-1]
+            # DEBUG: Print the entire output to understand its structure
+        print("Model Output:", output) 
+
+        # Handle potential variations in model output format
+        try:
+            generated_text = output[0]['generated_text']  # Assuming it's a list
+            if isinstance(generated_text, list):
+                output_message = generated_text[-1] 
+            elif isinstance(generated_text, str):
+                output_message = generated_text
+            else:
+                raise ValueError("Unexpected format for generated_text")
+        except (KeyError, ValueError) as e:
+            print(f"Error extracting generated text: {e}")
+            output_message = "Sorry, I'm having trouble understanding that. Dattebayo!" # Provide a default response 
+
         return output_message
-    
     
     def load_model(self, model_path):
         bnb_config = BitsAndBytesConfig(

@@ -55,9 +55,7 @@ class CharacterChatBot():
             
         messages.append({'role':'user', 'content':message})
         
-        prompt = ""
-        for msg in messages:
-            prompt += f"{msg['role']}: {msg['content']}\n"
+        prompt = "\n".join([f"{msg['role']}: {msg['content']}" for msg in messages])
         
         terminator =[
             self.model.tokenizer.eos_token_id,

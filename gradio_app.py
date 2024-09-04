@@ -56,12 +56,8 @@ def chat_with_character_chatbot(message, history):
                                          huggingface_token=os.getenv('huggingface_token')
                                         )
     output = character_chatbot.chat(message, history)
-    if 'system:' in output:
-        output_content = output.split('system:')[-1].strip()
-    else:
-        output_content = output.strip()
         
-    return output_content
+    return output
     
 
 

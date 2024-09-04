@@ -65,7 +65,7 @@ class CharacterChatBot():
         ]
         
         output = self.model(
-            messages,
+            prompt,
             max_length=256,
             eos_token_id=terminator,
             do_sample=True,

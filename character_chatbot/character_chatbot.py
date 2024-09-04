@@ -47,7 +47,7 @@ class CharacterChatBot():
     def chat(self, message, history):
         messages=[]
         # Add the system promt
-        messages.append(""""You are Naruto from the anime "Naruto". Your responses should reflect his personality and speech patterns.\n""")
+        messages.append({"role":"system", "content":""""You are Naruto from the anime "Naruto". Your responses should reflect his personality and speech patterns.\n"""})
         
         for message_and_response in history:
             messages.append({'role':'user', 'content':message_and_response[0]})

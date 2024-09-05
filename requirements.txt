@@ -10,3 +10,5 @@ accelerate
 git+https://github.com/huggingface/peft.git
 trl==0.9.6
 bitsandbytes==0.43.3
+spacy
+spacy-transformers

@@ -66,26 +66,20 @@ class CharacterChatBot():
         
         prompt += "assistant: "  # Indicate where the model should start generating
         
-        terminator = [
-            self.model.tokenizer.eos_token_id,
-            self.model.tokenizer.convert_tokens_to_ids('<|eot_id|>')
-        ]
+        # Use the pipeline to generate text
+        output = self.model(prompt, 
+                            max_length=len(prompt) + 256,  # Allow for up to 256 new tokens
+                            do_sample=True,
+                            temperature=0.6,
+                            top_p=0.9,
+                            eos_token_id=self.model.tokenizer.eos_token_id,
+                            pad_token_id=self.model.tokenizer.pad_token_id)
         
-        input_ids = self.model.tokenizer.encode(prompt, return_tensors='pt')
-        
-        output = self.model.generate(
-            input_ids=input_ids,
-            max_length=input_ids.shape[1] + 256,  # Allow for up to 256 new tokens
-            eos_token_id=terminator,
-            do_sample=True,
-            temperature=0.6,
-            top_p=0.9
-        )
-        
-        output_message = self.model.tokenizer.decode(output[0], skip_special_tokens=True)
+        # Extract the generated text
+        generated_text = output[0]['generated_text']
         
         # Extract only the assistant's (Naruto's) response
-        assistant_response = output_message.split('assistant:')[-1].strip()
+        assistant_response = generated_text.split('assistant:')[-1].strip()
         
         return assistant_response
     

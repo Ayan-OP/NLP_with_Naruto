@@ -45,33 +45,49 @@ class CharacterChatBot():
             
             
     def chat(self, message, history):
-        messages=[]
-        # Add the system promt
-        messages.append({"role":"system", "content":""""You are Naruto from the anime "Naruto". Your responses should reflect his personality and speech patterns.\n"""})
+        messages = []
+        # Add the system prompt
+        messages.append({"role": "system", "content": "You are Naruto from the anime 'Naruto'. Your responses should reflect his personality and speech patterns."})
         
-        for message_and_response in history:
-            messages.append({'role':'user', 'content':message_and_response[0]})
-            messages.append({'role':'assistant', 'content':message_and_response[1]})
-            
-        messages.append({'role':'user', 'content':message})
+        # Process the history
+        for user_message, assistant_response in history:
+            if user_message:  # Only add non-empty messages
+                messages.append({"role": "user", "content": user_message})
+            if assistant_response:  # Only add non-empty responses
+                messages.append({"role": "assistant", "content": assistant_response})
         
-        terminator =[
+        # Add the current message
+        messages.append({"role": "user", "content": message})
+        
+        # Convert messages to a single string
+        prompt = ""
+        for msg in messages:
+            prompt += f"{msg['role']}: {msg['content']}\n"
+        
+        prompt += "assistant: "  # Indicate where the model should start generating
+        
+        terminator = [
             self.model.tokenizer.eos_token_id,
             self.model.tokenizer.convert_tokens_to_ids('<|eot_id|>')
         ]
         
-        output = self.model(
-            messages,
-            max_length=256,
+        input_ids = self.model.tokenizer.encode(prompt, return_tensors='pt')
+        
+        output = self.model.generate(
+            input_ids=input_ids,
+            max_length=input_ids.shape[1] + 256,  # Allow for up to 256 new tokens
             eos_token_id=terminator,
             do_sample=True,
             temperature=0.6,
             top_p=0.9
         )
         
-        output_message = output[0]['generated_text'][-1]
-    
-        return output_message
+        output_message = self.model.tokenizer.decode(output[0], skip_special_tokens=True)
+        
+        # Extract only the assistant's (Naruto's) response
+        assistant_response = output_message.split('assistant:')[-1].strip()
+        
+        return assistant_response
     
     
     def load_model(self, model_path):

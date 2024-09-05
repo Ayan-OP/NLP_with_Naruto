@@ -68,7 +68,7 @@ class CharacterChatBot():
         
         # Use the pipeline to generate text
         output = self.model(prompt, 
-                            max_length=256,  # Allow for up to 256 new tokens
+                            max_length=len(prompt) + 256,  # Allow for up to 256 new tokens
                             do_sample=True,
                             temperature=0.6,
                             top_p=0.9,

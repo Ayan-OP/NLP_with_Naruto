@@ -1,32 +1,34 @@
 # NLP_with_Naruto: Unveiling the Hidden Depths of the Naruto Universe through Natural Language Processing
 
-[![Project Image 1]](path/to/image1.png)
-[![Project Image 2]](path/to/image2.png)
-[![Project Image 3]](path/to/image3.png)
+![Dashboard](https://github.com/Ayan-OP/NLP_with_Naruto/blob/main/screencapture-89a535c08314fba257-gradio-live-2024-09-05-10_19_42.png)
 
 Embark on an exciting journey through the world of Naruto, empowered by the capabilities of Natural Language Processing (NLP). This project harnesses various NLP techniques to analyze and interact with the beloved anime series, offering a deeper understanding of its themes, characters, and even allowing you to converse with Naruto himself.
 
 ## Key Features
 
-### 1. Jutsu Classification
+### 1. Jutsu Classification: Deciphering the Techniques
 
-* **Unravel the Secrets of Jutsu:** Accurately classify Naruto's diverse array of jutsu (techniques) into their respective types: Genjutsu (illusion techniques), Ninjutsu (ninja techniques), and Taijutsu (hand-to-hand combat techniques).
-* **Powered by DistilBERT:**  Leverages a fine-tuned DistilBERT model to analyze jutsu descriptions and make precise classifications, aiding in comprehending their nature and strategic applications.
+* **Unraveling the Jutsu Tapestry:**  Naruto's world is teeming with a vast array of jutsu (techniques), each with its own unique properties and strategic applications. This project tackles the challenge of automatically classifying these jutsu into their distinct types: 
+    * **Genjutsu:** Illusions that deceive and manipulate the senses.
+    * **Ninjutsu:** Techniques utilizing chakra manipulation and elemental transformations.
+    * **Taijutsu:** Hand-to-hand combat techniques honed through rigorous training and physical prowess.
+* **DistilBERT at the Helm:** A fine-tuned DistilBERT model, trained on carefully curated jutsu descriptions, lies at the heart of this classification system. It intelligently analyzes textual nuances to accurately categorize each jutsu, providing valuable insights into their nature and combat potential.
 
-### 2. Theme Exploration
+### 2. Theme Exploration: Unmasking the Narrative Tapestry
 
-* **Uncover the Heart of the Story:** Identify and visualize the prominent themes that weave through the Naruto series, from friendship and determination to the complexities of power and sacrifice.
-* **Zero-Shot Classification:** Employs a zero-shot classification pipeline with a BART model to extract themes from episode scripts, even without explicit training on Naruto-specific data.
+* **Beyond the Surface:**  Delve deeper into the narrative fabric of Naruto, beyond the thrilling battles and captivating characters. This project aims to identify and visualize the prominent themes that shape the series, revealing the underlying messages and emotional core that resonate with fans worldwide.
+* **Zero-Shot Classification Prowess:** A zero-shot classification pipeline, powered by the versatile BART model, enables theme extraction even without explicit training on Naruto-specific data. This demonstrates the adaptability and potential of NLP to uncover hidden meanings within any narrative.
 
-### 3. Character Network Analysis
+### 3. Character Network Analysis: Unveiling the Bonds
 
-* **Map the Web of Relationships:** Extract character names from episode scripts using Named Entity Recognition (NER) with spaCy.
-* **Visualize Interactions:** Construct an interactive network graph that reveals the intricate relationships and connections between characters, shedding light on their social dynamics and alliances.
+* **The Ninja Social Web:** Within the vast cast of characters in Naruto, a complex web of relationships and interactions exists. This project utilizes Named Entity Recognition (NER) to identify characters mentioned in episode scripts and then constructs an interactive network graph to visualize these connections.
+* **From Allies to Rivals:**  Explore the intricate bonds of friendship, loyalty, rivalry, and even love that shape the characters' journeys. Witness the evolution of these relationships as the story unfolds, gaining a deeper appreciation for the social dynamics within the Naruto universe.
 
-### 4. Character Chatbot: Converse with Naruto!
+### 4. Character Chatbot: A Conversation with Naruto Uzumaki
 
-* **Bring Naruto to Life:** Engage in dynamic conversations with a virtual Naruto, powered by a fine-tuned Llama language model.
-* **Authentic Personality and Speech:** Experience Naruto's distinctive personality, humor, and speech patterns as you chat with him about his adventures, dreams, and the ninja way.
+* **Step into the Ninja World:**  Experience the thrill of conversing with Naruto Uzumaki himself through an interactive chatbot. This innovative feature brings the iconic protagonist to life, allowing fans to engage in dynamic conversations and explore his thoughts, feelings, and motivations.
+* **Powered by Llama:** A fine-tuned Llama language model, trained on extensive dialogues from the Naruto series, ensures that the chatbot captures Naruto's distinctive personality, humor, and unwavering determination. From discussing his dreams of becoming Hokage to sharing his insights on the ninja way, the chatbot offers a unique and immersive experience for fans of all ages.
+
 
 ## Project Structure
 
